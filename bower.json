@@ -1,0 +1,17 @@
+{
+  "name": "bookshop",
+  "version": "0.0.0",
+  "homepage": "https://github.com/wangxuq/bookshop",
+  "authors": [
+    "wangxuq <1228845897@qq.com>"
+  ],
+  "description": "UI install tool",
+  "keywords": [
+    "bower",
+    "node"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "~3.2.0"
+  }
+}
