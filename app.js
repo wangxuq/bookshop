@@ -3,21 +3,22 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes');
-
-var app = module.exports = express.createServer();
-
+var express = require('express');
+var routes = require('./routes');
+var path = require("path");
+var bodyParser = require('body-parser');
+var multer  = require('multer');
+var methodOverride = require('method-override');
+var app = express();
 // Configuration
 
-app.configure(function(){
-  app.set('views', __dirname + '/views');
+  app.set('views',path.join(__dirname + '/views'));
   app.set('view engine', 'ejs');
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
+  app.set("port",process.env.PORT || 3000);
+  app.use(bodyParser.json());
+  app.use(methodOverride('X-HTTP-Method-Override'));
   app.use(app.router);
-  app.use(express.static(__dirname + '/static'));
-});
+  app.use(express.static(path.join(__dirname + '/static')));
 
 app.configure('development', function(){
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
@@ -29,8 +30,8 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
+routes(app);
 
 app.listen(3000, function(){
-  console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+  console.log("Express server listening on port in 3000");
 });
