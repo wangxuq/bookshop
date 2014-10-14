@@ -4,9 +4,11 @@
  */
 
 module.exports = function(app){
+
+    //backend views
     app.get("/",function(req, res){
-        res.render('index', { 
-            title: 'index'
+        res.render('index-backend.ejs', { 
+            title: 'index-backend'
             });
     });
 }
