@@ -3,29 +3,35 @@
  */
 module.exports = function(app){
 
-    //backend views
+//backend views
+    //go to login-backend
     app.get("/",function(req,res){
-        res.render('login-backend.ejs',{
+        res.render('login-backend',{
             title:'login-backend',
         })        
     })
+    //post the backend login
     app.post("/",function(req,res){
         req.body.username = req.body["username"];
         req.body.password = req.body["password"];
-        if(req.body.username != "wangxu" ||req.body.username == null){
+        if(req.body.username != "wangxu" || 
+            req.body.username == null ||
+            req.body.password != "sa" ||
+            req.body.password == null ){
             //alert("the username is incorrect or null,input again");
-            res.redirect('login-backend.ejs');
+            return res.redirect('/');
         }
-        if(req.body.password != "sa" || req.body.password == null ){
-            //alert("the password is incorrect or null,input again");
-            res.redirect('login-backend.ejs');
-        }
-        res.redirect('index-backend.ejs');
+        res.redirect('index-backend');
     })
-    app.get("index-backend",function(req,res){
-        res.render('index-backend.ejs',{
+    //get the index-backend page
+    app.get("/index-backend",function(req,res){
+        res.render('index-backend',{
             title : 'index-backend',
         })
+    })
+    //logout the index-backend page
+    app.get('/logout',function(req,res){
+        res.redirect('/');
     })
 }
 
