@@ -7,6 +7,7 @@ var multer  = require('multer');
 var methodOverride = require('method-override');
 var settings = require('./settings');
 var MongoStore = require('connect-mongo')(express);
+var flash = require('connect-flash');
 var app = express();
 // Configuration
 app.set('views',path.join(__dirname + '/views'));
