@@ -17,14 +17,14 @@ module.exports = function(app){
     app.post("/",function(req,res){
         req.body.username = req.body["username"];
         req.body.password = req.body["password"];
-     /*   if(req.body.username != "wangxu" || 
+      /*  if(req.body.username != "wangxu" || 
             req.body.username == null ||
             req.body.password != "sa" ||
             req.body.password == null ){
             //alert("the username is incorrect or null,input again");
             return res.redirect('/');
-        }
-    */  req.flash('success','login successfully');
+        }   */
+        req.flash('success','login successfully');
         res.redirect('index-backend');
     })
     //get the index-backend page
