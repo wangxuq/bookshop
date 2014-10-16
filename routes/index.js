@@ -10,7 +10,7 @@ module.exports = function(app){
         res.render('login-backend',{
             title:'login-backend',
             success : req.flash('success').toString(),
-            error : req.flash('success').toString()
+            error : req.flash('error').toString()
         })        
     })
     //post the backend login
