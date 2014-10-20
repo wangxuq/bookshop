@@ -1,12 +1,12 @@
 var mongodb = require('./db');
 
-function Book(book){
-    this.bookId = book.bookId;
-    this.bookName = book.bookName;
-    this.bookAuthor = book.bookAuthor;
-    this.bookDetail = book.bookDetail;
-    this.bookPublisher = book.bookPublisher;
-    this.bookPublishDate = book.bookPublishDate;
+function Book(bookId,bookName,bookAuthor,bookPublisher,bookPublishDate,bookDetail){
+    this.bookId = bookId;
+    this.bookName = bookName;
+    this.bookAuthor = bookAuthor;
+    this.bookDetail = bookDetail;
+    this.bookPublisher = bookPublisher;
+    this.bookPublishDate = bookPublishDate;
 }
 module.exports=Book;
 
@@ -18,7 +18,7 @@ Book.prototype.save=function(callback){
         year : date.getFullYear(),
         month : date.getFullYear()+"-"+(date.getMonth()+1),
         day : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate(),
-        hour : date.getFullYear()+'-'+(date.getMonth()+1)+'-'date.getDate()+'-'+date.getHours(),
+        hour : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'-'+date.getHours(),
         minute : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'-'+date.getHours()+'-'+date.getMinutes()
     }
     var book = {
@@ -28,7 +28,7 @@ Book.prototype.save=function(callback){
         bookDetail : this.bookDetail,
         bookPublisher : this.bookPublisher,
         bookPublishDate : this.bookPublishDate,
-        bookAddDate : time
+        bookAddDate : time.minute
     }
     //open the mongodb
     mongodb.open(err,db){

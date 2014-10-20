@@ -44,19 +44,20 @@ module.exports = function(app){
         })
     })
     app.post('/addBook',function(req,res){
-        id : req.body.bookId;
-        name : req.body.bookName;
-        author : req.body.bookAuthor;
-        publisher : req.body.bookPushlisher;
-        publishDate : req.body.bookPublishDate;
-        bookDetail : req.body.bookDetail;
-        var newBook = new Book();
-        newBook.save(funtion(err,book){
+        var id = req.body.bookId;
+        var name = req.body.bookName;
+        var author = req.body.bookAuthor;
+        var publisher = req.body.bookPushlisher;
+        var publishDate = req.body.bookPublishDate;
+        var bookDetail = req.body.bookDetail;
+        var newBook = new Book(id,name,author,publisher,publishDate,bookDetail);
+        newBook.save(function(err){
             if(err){
                 req.flash('error','add book fail');
                 return res.redirect('index-backend');
             }
-            return book[0];
+            req.flash('success','add book successfully');
+            return res.redirect('index-backend');
         });
     })
     //logout the index-backend page
