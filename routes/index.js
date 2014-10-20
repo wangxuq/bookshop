@@ -1,7 +1,7 @@
 /*
  * GET home page.
  */
-
+var Book = require('../model/book');
 module.exports = function(app){
 
 //backend views
@@ -44,7 +44,20 @@ module.exports = function(app){
         })
     })
     app.post('/addBook',function(req,res){
-        
+        id : req.body.bookId;
+        name : req.body.bookName;
+        author : req.body.bookAuthor;
+        publisher : req.body.bookPushlisher;
+        publishDate : req.body.bookPublishDate;
+        bookDetail : req.body.bookDetail;
+        var newBook = new Book();
+        newBook.save(funtion(err,book){
+            if(err){
+                req.flash('error','add book fail');
+                return res.redirect('index-backend');
+            }
+            return book[0];
+        });
     })
     //logout the index-backend page
     app.get('/logout',function(req,res){

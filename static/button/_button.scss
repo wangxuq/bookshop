@@ -1,0 +1,26 @@
+$width: 13em !default;
+$height: 5em !default;
+$radius: 0.75em !default;
+$color: #14bbb1 !default;
+$percent-dark: 10% !default;
+
+@mixin button-rounded($width, $height, $radius, $color, $percent-dark) {
+  box-sizing: border-box;
+  margin: 1em;
+  border-radius: $radius;
+  width: $width;
+  background-color: $color;
+  line-height: $height;
+  font-size: 1em;
+  text-align: center;
+  text-transform: uppercase;
+  @if lightness($color) > 70% {
+    color: #333;
+  } @else {
+    color: #fff;
+  }
+  &:hover {
+    background-color: darken($color, $percent-dark);
+    cursor: pointer;
+  }
+}

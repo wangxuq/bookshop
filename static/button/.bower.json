@@ -1,0 +1,32 @@
+{
+  "name": "button",
+  "authors": [
+    "Mark Palfreeman <markpalfreeman@gmail.com>",
+    "Gabe Pelegrin <gabepelegrin@gmail.com>"
+  ],
+  "ignore": [
+    "**/.*md",
+    ".gitignore",
+    "bower.json"
+  ],
+  "keywords": [
+    "sass",
+    "button",
+    "mixin",
+    "css"
+  ],
+  "description": "Sass mixin for standard button w/ width, height, roundness, and color inputs",
+  "main": "_button.scss",
+  "license": "MIT",
+  "homepage": "https://github.com/markpalfreeman/button",
+  "_release": "e0671b2eb1",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e0671b2eb1dbedd15dc46e2a32183b17d0fb982c"
+  },
+  "_source": "git://github.com/markpalfreeman/button.git",
+  "_target": "*",
+  "_originalSource": "button",
+  "_direct": true
+}
