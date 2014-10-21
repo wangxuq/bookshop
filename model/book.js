@@ -18,8 +18,9 @@ Book.prototype.save=function(callback){
         year : date.getFullYear(),
         month : date.getFullYear()+"-"+(date.getMonth()+1),
         day : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate(),
-        hour : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'-'+date.getHours(),
-        minute : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'-'+date.getHours()+'-'+date.getMinutes()
+        hour : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'  '+date.getHours(),
+        minute : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'  '+date.getHours()+':'+date.getMinutes(),
+		second : date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate()+'  '+date.getHours()+':'+date.getMinutes()+':'+date.getSeconds()
     }
     var book = {
         bookId : this.bookId,
@@ -28,7 +29,7 @@ Book.prototype.save=function(callback){
         bookDetail : this.bookDetail,
         bookPublisher : this.bookPublisher,
         bookPublishDate : this.bookPublishDate,
-        bookAddDate : time.minute
+        bookAddDate : time.second
     }
     //open the mongodb
     mongodb.open(function(err,db){
@@ -40,7 +41,7 @@ Book.prototype.save=function(callback){
                 mongodb.close();
                 return callback(err);
             }
-            collection.insert('book',{safe:true},function(err,book){
+            collection.insert(book,{safe:true},function(err,book){
                 mongodb.close();
                 if(err){
                     return callback(err);
