@@ -31,7 +31,7 @@ Book.prototype.save=function(callback){
         bookAddDate : time.minute
     }
     //open the mongodb
-    mongodb.open(err,db){
+    mongodb.open(function(err,db){
         if(err){
             return callback(err);
         }
@@ -48,5 +48,5 @@ Book.prototype.save=function(callback){
                 callback(null,book[0]);
             });
         });
-    };
+    });
 }
