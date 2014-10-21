@@ -2,6 +2,7 @@ var express = require('express');
 var routes = require('./routes');
 var path = require("path");
 var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
 var multer  = require('multer');
 var methodOverride = require('method-override');
 var settings = require('./settings');
@@ -14,7 +15,8 @@ app.set('views',path.join(__dirname + '/views'));
 app.set('view engine', 'ejs');
 app.set("port",process.env.PORT || 3000);
 
-app.use(bodyParser.text({ type: 'text/html' }));
+app.use(cookieParser());
+app.use(bodyParser({'Content-Type': 'application/x-www-form-urlencoded'}));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(path.join(__dirname + '/static')));
 app.use(session({
