@@ -51,3 +51,32 @@ Book.prototype.save=function(callback){
         });
     });
 }
+//get the book information
+Book.get = function(query,callback){
+    var query = {};
+    if(req.body.bookId){
+        query = req.body.bookId;
+    }
+    if(req.body.bookName){
+        query = req.body.bookName;
+    }
+    //open the db
+    mongodb.open(function(err,db){
+        if(err){
+            return callback(err);
+        }
+        db.collection('books',function(err,collection){
+            if(err){
+                mongodb.close();
+                return callback(err);
+            }
+            collection.find(query).sort({time : -1}).toArray(function(err,querys){
+                mongodb.close();
+                if(err){
+                    return callback(err);
+                }
+                return callback(null,querys);
+            });
+        });
+    });
+}

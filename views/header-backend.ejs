@@ -2,12 +2,13 @@
 <html>
 <head>
     <title><%=title%></title>
+    <link rel="stylesheet" href="/css/backend.css">
     <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/button/_button.scss">
     <script type="text/javascript" src="/jquery/dist/jquery.js"></script>
     <script type="text/javascript" src="/bootstrap/dist/js/bootstrap.js"></script>
 </head>
-<body>
+<body class="body">
     <div class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -18,7 +19,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">图书管理
                     <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="/addBook">添加图书</a></li>
+                    <li><a href="/addBook-backend">添加图书</a></li>
                     <li><a href="#">删除图书</a></li>
                     <li><a href="#">修改图书</a></li>
                     <li><a href="#">查询图书</a></li>
@@ -56,6 +57,7 @@
         </ul>
     </div>
     </div>
+    <div class="room">
     <div id="container" class="container">
         <% if(success){ %>
             <div class="alert alert-success">

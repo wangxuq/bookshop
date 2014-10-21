@@ -1,0 +1,18 @@
+.body {
+    background-color : #66CC99;
+}
+.login {
+    width : 20%;
+    margin-top:15%;
+    margin-left :40%;
+}
+.room {
+    width : 70%
+    margin-left : 15%;
+    margin-right : 15%
+    background-color : #999999;
+}
+.subroom {
+    width : 60%;
+    text-align : left;
+}

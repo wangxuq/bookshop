@@ -34,14 +34,14 @@ module.exports = function(app){
         })
     })
     //get the addBook page
-    app.get('/addBook',function(req,res){
-        res.render('addBook',{
+    app.get('/addBook-backend',function(req,res){
+        res.render('addBook-backend',{
             title : 'addBook',
             success : req.flash('success').toString(),
             error : req.flash('error').toString()
         })
     })
-    app.post('/addBook',function(req,res){
+    app.post('/addBook-backend',function(req,res){
         var id = req.body.bookId;
         var name = req.body.bookName;
         var author = req.body.bookAuthor;
@@ -58,6 +58,14 @@ module.exports = function(app){
             return res.redirect('index-backend');
         });
     })
+    //get the selectBook page
+    app.get('/selectBook',function(req,res){
+        res.render('selectBook',{
+            title : 'selectBook',
+            success : req.flash('success').toString(),
+            error : req.flash('error').toString()
+        })
+    });
     //logout the index-backend page
     app.get('/logout',function(req,res){
         res.redirect('/');

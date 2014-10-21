@@ -1,0 +1,37 @@
+<%include header-backend.ejs%>
+<form role="form"  method="post">
+  <div class="col-md-6">
+    <div class="form-group">
+        <label for="bookId">book id:</label>
+        <input type="text" class="form-control" name="bookId" id="bookId"
+            placeholder="please enter your book id">
+    </div>
+    <div class="form-group">
+        <label for="bookName">book name:</label>
+        <input type="text" class="form-control" name="bookName" id="bookName"
+            placeholder="please enter your book name">
+    </div>
+    <div class="form-group">
+        <label for="bookAuthor">book author:</label>
+        <input type="text" class="form-control" name="bookAuthor" id="bookAuthor"
+            placeholder="please enter your book author">
+    </div>
+    <div class="form-group">
+        <label for="bookPublisher">bookPublisher:</label>
+        <input type="text" class="form-control" name="bookPublisher" id="bookPublisher"
+            placeholder="please enter your book publish date">
+    </div>
+    <div class="form-group">
+        <label for="bookPublishDate">book publish date:</label>
+        <input type="date" class="form-control" name="bookPublishDate" id="bookPublishDate"
+            placeholder="please enter your book publish date">
+    </div>
+    <div class="form-group">
+        <label for="bookDetail">book detail:</label>
+        <textArea type="text" class="form-control" name="bookDetail" id="bookDetail"
+            placeholder="please enter your book detail"></textArea>
+    </div>
+    <button type="submit"  class="btn btn-default">submit</button>
+  </div>
+</form>
+<%include footer-backend.ejs%>
