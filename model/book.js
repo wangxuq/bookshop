@@ -51,15 +51,8 @@ Book.prototype.save=function(callback){
         });
     });
 }
-//get the book information
-Book.get = function(query,callback){
-    var query = {};
-    if(req.body.bookId){
-        query = req.body.bookId;
-    }
-    if(req.body.bookName){
-        query = req.body.bookName;
-    }
+//get all books
+Book.getAllBook = function(callback){
     //open the db
     mongodb.open(function(err,db){
         if(err){
@@ -70,12 +63,12 @@ Book.get = function(query,callback){
                 mongodb.close();
                 return callback(err);
             }
-            collection.find(query).sort({time : -1}).toArray(function(err,querys){
+            collection.find().sort({time : -1}).toArray(function(err,book){
                 mongodb.close();
                 if(err){
                     return callback(err);
                 }
-                return callback(null,querys);
+                return callback(null,book);
             });
         });
     });

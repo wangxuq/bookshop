@@ -59,12 +59,19 @@ module.exports = function(app){
         });
     })
     //get the selectBook page
-    app.get('/selectBook',function(req,res){
-        res.render('selectBook',{
-            title : 'selectBook',
-            success : req.flash('success').toString(),
-            error : req.flash('error').toString()
-        })
+    app.get('/getAllBook-backend',function(req,res){
+        Book.getAllBook(function(err,book){
+			if(err){
+				req.flash('error','get the books fail');
+				return res.redirect('index-backend');
+			}
+			res.render('getAllBook-backend',{
+				title : 'getAllBook-backend',
+				book : book,
+				success : req.flash('success').toString(),
+				error : req.flash('error').toString()
+			});
+		});
     });
     //logout the index-backend page
     app.get('/logout',function(req,res){
