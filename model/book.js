@@ -73,3 +73,24 @@ Book.getAllBook = function(callback){
         });
     });
 }
+Book.removeBookById = function(bookId,callback){
+	mongodb.open(function(err,db){
+		if(err){
+			return callback(err);
+		}
+		db.collection('books',function(err,collection){
+			if(err){
+				mongodb.close();
+				return callback(err);
+			}
+			var id = bookId;
+			collection.remove({bookId : id},function(err){
+				mongodb.close();
+				if(err){
+					return callback(err);
+				}
+				return callback(null);
+			});
+		});
+	});
+};

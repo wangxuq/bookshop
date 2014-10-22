@@ -73,6 +73,16 @@ module.exports = function(app){
 			});
 		});
     });
+	//remove book by bookId
+	app.get('/remove/:bookId',function(req,res){
+		Book.removeBookById(req.params.bookId,function(err){
+			if(err){
+				req.flash('error','delete the book failed');
+			}
+			req.flash('success','delete the book successfully');
+			return res.redirect('getAllBook-backend');
+		});
+	})
     //logout the index-backend page
     app.get('/logout',function(req,res){
         res.redirect('/');
