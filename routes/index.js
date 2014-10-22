@@ -41,6 +41,7 @@ module.exports = function(app){
             error : req.flash('error').toString()
         })
     })
+    //save the book information
     app.post('/addBook-backend',function(req,res){
         var id = req.body.bookId;
         var name = req.body.bookName;
@@ -73,7 +74,7 @@ module.exports = function(app){
 			});
 		});
     });
-	//remove book by bookId
+	//remove book by bookId in getAllBook page
 	app.get('/remove/:bookId',function(req,res){
 		Book.removeBookById(req.params.bookId,function(err){
 			if(err){
@@ -83,6 +84,14 @@ module.exports = function(app){
 			return res.redirect('getAllBook-backend');
 		});
 	})
+    //get the moveBook form page
+    app.get('/removeBook-backend',function(req,res){
+        res.render('removeBook-backend',{
+            title : "removeBook-backend",
+            success : req.flash('success').toString(),
+            error : req.flash('error').toString()
+        });
+    });
     //logout the index-backend page
     app.get('/logout',function(req,res){
         res.redirect('/');
