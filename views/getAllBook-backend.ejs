@@ -1,26 +1,29 @@
-<%include header-backend.ejs%>
+﻿<%include header-backend.ejs%>
+	<p align="center"><font size="6">all the books</font></p>
 	<%if(book){%>
-			<div>
+			<table class="table">
 				<tr>
-					<td>bookId</td>
-					<td>bookName</td>
-					<td>bookAuthor</td>
-					<td>bookPublisher</td>
-					<td>bookPublishDate</td>
-					<td>bookAddDate</td>
-					<td>bookDetail</td>
+					<th>bookId</th>
+					<th>bookName</th>
+					<th>bookAuthor</th>
+					<th>bookPublisher</th>
+					<th>bookPublishDate</th>
+					<th>bookAddDate</th>
+					<th><font color="blue">delete</font></th>
+					<th><font color="blue">modify</font></th>
 				</tr>
 				<%book.forEach(function(item,index){%>
-					<tr>
-						<td><%=item.bookId%></td>
-						<td><%=item.bookName%></td>
-						<td><%=item.bookAuthor%></td>
-						<td><%=item.bookPublisher%></td>
-						<td><%=item.bookPublishDate%></td>
-						<td><%=item.bookAddDate%></td>
-						<td><%=item.bookDetail%></td>
-					</tr>
+				<tr>
+					<th><%=item.bookId%></th>
+					<th><%=item.bookName%></th>
+					<th><%=item.bookAuthor%></th>
+					<th><%=item.bookPublisher%></th>
+					<th><%=item.bookPublishDate%></th>
+					<th><%=item.bookAddDate%></th>
+					<th><a href="#">delete</a>
+					<th><a href="#">modify</a>
+				</tr>
 				<%});%>
-			</div>
+			</table>
 	<%}%>
 <%include footer-backend.ejs%>
