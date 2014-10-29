@@ -1,0 +1,27 @@
+<%include header-backend.ejs%>
+	<p align="center"><font size="6">all the books</font></p>
+	<%if(book){%>
+			<table class="table">
+				<tr>
+					<th>bookId</th>
+					<th>bookName</th>
+					<th>bookAuthor</th>
+					<th>bookPublisher</th>
+					<th>bookPublishDate</th>
+					<th>bookAddDate</th>
+					<th><font color="blue">delete</font></th>
+				</tr>
+				<%book.forEach(function(item,index){%>
+				<tr>
+					<th><%=item.bookId%></th>
+					<th><%=item.bookName%></th>
+					<th><%=item.bookAuthor%></th>
+					<th><%=item.bookPublisher%></th>
+					<th><%=item.bookPublishDate%></th>
+					<th><%=item.bookAddDate%></th>
+					<th><a href="/remove/<%=item.bookId%>">delete</a>
+				</tr>
+				<%});%>
+			</table>
+	<%}%>
+<%include footer-backend.ejs%>

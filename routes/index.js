@@ -79,12 +79,13 @@ module.exports = function(app){
 		Book.removeBookById(req.params.bookId,function(err){
 			if(err){
 				req.flash('error','delete the book failed');
+				return res.redirect('getAllBook-backend');
 			}
 			req.flash('success','delete the book successfully');
 			return res.redirect('getAllBook-backend');
 		});
 	})
-    //get the moveBook form page
+    //get the moveBook page
     app.get('/removeBook-backend',function(req,res){
         res.render('removeBook-backend',{
             title : "removeBook-backend",
@@ -92,6 +93,28 @@ module.exports = function(app){
             error : req.flash('error').toString()
         });
     });
+	
+	//removeBookById-backend
+	app.get('/removeBookById-backend',function(req,res){
+		Book.getBookById(bookId,function(err,book){
+			bookId = req.body.bookId;
+			if(err){
+				req.flash('error','delete the book failed');
+				return res.redirect('getAllBook-backend');
+			}
+			req.flash('success','delete the book successfully');
+			return res.redirect('getAllBook-backend');
+		});
+	})
+	//removeBookByName-backend
+	app.get('/removeBookByName-backend',function(req,res){
+        res.render('removeBook-backend',{
+            title : "removeBook-backend",
+            success : req.flash('success').toString(),
+            error : req.flash('error').toString()
+        });
+    });
+	
     //logout the index-backend page
     app.get('/logout',function(req,res){
         res.redirect('/');
