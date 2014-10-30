@@ -73,6 +73,28 @@ Book.getAllBook = function(callback){
         });
     });
 }
+//get book by bookId or bookName
+Book.getBookById = function(bookId,callback){
+	mongodb.open(function(err,db){
+		if(err){
+			return callback(err);
+		}
+		db.collection('books',function(err,collection){
+			if(err){
+				mongodb.close();
+				return callback(err);
+			}
+			collection.find({bookId : bookId},function(err,book){
+				mongodb.close();
+				if(err){
+					return callback(err);
+				}
+				return callback(null,book);
+			});
+		});
+	});
+};
+//remove books by id
 Book.removeBookById = function(bookId,callback){
 	mongodb.open(function(err,db){
 		if(err){
